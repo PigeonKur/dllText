@@ -75,5 +75,9 @@
             return words.Length;
 
         }
+        public static int CountCharacters(string input)
+        {
+            return string.IsNullOrWhiteSpace(input) ? 0 : input.Length;
+        }
     }
 }
