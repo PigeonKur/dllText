@@ -22,6 +22,14 @@
 
             return deleteTwoSpaces.Trim();
         }
+        public static int CountWords(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return 0;
 
+            string[] words = input.Split(new[] { ',' });
+            return words.Length;
+
+        }
     }
 }
