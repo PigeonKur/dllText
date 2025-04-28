@@ -31,5 +31,20 @@
             return (longest, shortest);
         }
 
+        public static int CountWordOccurrences(string text, string word, bool caseSensitive)
+        {
+            var separators = new char[] { ' ', ',', '.', '!', '?', ';', ':', '-', '\n', '\r' };
+            var words = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            if (!caseSensitive)
+            {
+                text = text.ToLower();
+                word = word.ToLower();
+                words = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            }
+
+            return words.Count(w => w == word);
+        }
+
     }
 }
