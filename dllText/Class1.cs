@@ -79,5 +79,11 @@
         {
             return string.IsNullOrWhiteSpace(input) ? 0 : input.Length;
         }
+        public static bool IsPalindrome(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input)) return false;
+            string cleaned = new string(input.Where(char.IsLetterOrDigit).ToArray()).ToLower();
+            return cleaned.SequenceEqual(cleaned.Reverse());
+        }
     }
 }
