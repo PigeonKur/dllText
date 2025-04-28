@@ -1,4 +1,6 @@
-﻿namespace dllText
+﻿using System.Text.RegularExpressions;
+
+namespace dllText
 {
     public class Class
     {
@@ -84,6 +86,20 @@
             if (string.IsNullOrWhiteSpace(input)) return false;
             string cleaned = new string(input.Where(char.IsLetterOrDigit).ToArray()).ToLower();
             return cleaned.SequenceEqual(cleaned.Reverse());
+        }
+        public static List<string> GetMostFrequentWords(string input, int topN = 3)
+        {
+            if (string.IsNullOrWhiteSpace(input)) return new List<string>();
+
+            var words = Regex.Matches(input.ToLower(), @"\b\w+\b")
+                .Cast<Match>()
+                .Select(m => m.Value);
+
+            return words.GroupBy(w => w)
+                .OrderByDescending(g => g.Count())
+                .Take(topN)
+                .Select(g => g.Key)
+                .ToList();
         }
     }
 }
