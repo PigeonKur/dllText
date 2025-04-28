@@ -17,5 +17,19 @@
             }
         }
 
+        public static (string Longest, string Shortest) FindLongestAndShortest(string text)
+        {
+            var separators = new char[] { ' ', ',', '.', '!', '?', ';', ':', '-', '\n', '\r' };
+            var words = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            if (words.Length == 0)
+                return (null, null);
+
+            var longest = words.OrderByDescending(w => w.Length).First();
+            var shortest = words.OrderBy(w => w.Length).First();
+
+            return (longest, shortest);
+        }
+
     }
 }
