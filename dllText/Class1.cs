@@ -12,5 +12,16 @@
             return new string(charArray);
 
         }
+
+        public static string RemoveSpaces(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return input;
+
+            string deleteTwoSpaces = input.Replace("  ", "");
+
+            return deleteTwoSpaces.Trim();
+        }
+
     }
 }
